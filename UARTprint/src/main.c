@@ -1,6 +1,7 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
+#include <string.h>
 
 #define BAUD 9600UL
 #define BAUD_PRESCALE (((F_CPU / (BAUD * 16UL))) - 1)
@@ -27,6 +28,23 @@ ISR(USART_RX_vect){
     }
 }
 
+void println(char s[]){
+    for (int i = 0; i< strlen(s); i++) {
+        while (!(UCSR0A & (1 << UDRE0)));  // warten bis UDR0 leer ist und Senden moeglich
+        UDR0 = s[i]; //
+    }
+    while (!(UCSR0A & (1 << UDRE0)));  // warten bis UDR0 leer ist und Senden moeglich
+    UDR0 = '\r'; //
+}
+
+void print(char s[]){
+    for (int i = 0; i< strlen(s); i++) {
+        while (!(UCSR0A & (1 << UDRE0)));  // warten bis UDR0 leer ist und Senden moeglich
+        UDR0 = s[i]; //
+    }
+    while (!(UCSR0A & (1 << UDRE0)));  // warten bis UDR0 leer ist und Senden moeglich
+}
+
 int main(){
     DDRD |= (1 << 1); // Data Direktory Register für den TX-pin
 
@@ -41,6 +59,7 @@ int main(){
 
     while(1){
         _delay_ms(1000);
+        println("Hello World");
     }
 }
 

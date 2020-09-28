@@ -1,0 +1,4 @@
+"/Users/clee/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/202.6948.80/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=uno -G "CodeBlocks - Unix Makefiles" /Users/clee/git/uC-Space-HTL/UARTprint
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/clee/git/uC-Space-HTL/UARTprint/cmake-build-uno

@@ -1,9 +1,4 @@
 "/Users/clee/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/202.6948.80/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/clee/git/uC-Space-HTL/UARTecho
-CMake Error at CMakeLists.txt:15 (include):
-  include could not find load file:
-
-    CMakeListsPrivate.txt
-
-
--- Configuring incomplete, errors occurred!
-See also "/Users/clee/git/uC-Space-HTL/UARTecho/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/clee/git/uC-Space-HTL/UARTecho/cmake-build-debug
