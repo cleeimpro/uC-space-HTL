@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/clee/git/uC-Space-HTL/UARTprint/src/main.cpp
+avr/io.h
+-
+avr/interrupt.h
+-
+util/delay.h
+-
+
