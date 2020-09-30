@@ -82,8 +82,11 @@ ISR(USART_RX_vect){
         }
         print("> ");
         pos_input = 0;
-        for(int i = 0; (i-1)<LEN(input); i++){
+        /*for(int i = 0; (i-1)<LEN(input); i++){
             input[i] = NULL;
+        }*/
+        for(char &i : input){
+            i = NULL;
         }
     } else if (res_data >= 33 && res_data <= 126){
         input[pos_input] = res_data;
