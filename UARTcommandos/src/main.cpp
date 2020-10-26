@@ -2,14 +2,6 @@
 #include <avr/interrupt.h>
 #include <string.h>
 
-#define BAUD 9600UL
-#define BAUD_PRESCALE (((F_CPU / (BAUD * 16UL))) - 1)
-#define LEN(arr) ((int) (sizeof (arr) / sizeof (arr)[0]))
-
-#define LED_PIN (1<<PB5)
-#define LED_DDR DDRB
-#define LED_PORT PORTB
-
 /**
  * Der Arduino Uno soll alle empfangenen seriellen Daten
  * wieder an das Ursprungsgeraet zurueckschicken.
@@ -17,7 +9,16 @@
  * PinConf Arduino:
  * PD0: RX
  * PD1: TX
+ * LED_BUILTIN: PB5
  */
+
+#define BAUD 9600UL
+#define BAUD_PRESCALE (((F_CPU / (BAUD * 16UL))) - 1)
+#define LEN(arr) ((int) (sizeof (arr) / sizeof (arr)[0]))
+
+#define LED_PIN (1<<PB5)
+#define LED_DDR DDRB
+#define LED_PORT PORTB
 
 void print(char s[]){
     for (int i = 0; i< strlen(s); i++) {
@@ -41,7 +42,7 @@ alle 10ms
 ISR (TIMER0_COMPA_vect){
     static unsigned int millisekunden = 0;
     millisekunden += 10;
-    if (millisekunden == 1000){
+    if (millisekunden == 10000){
         LED_PORT ^= LED_PIN;
         millisekunden = 0;
     }
@@ -52,7 +53,6 @@ ISR (TIMER0_COMPA_vect){
  * wird aufgerufen wenn des Speicherregister UDR0 voll mit
  * empfangenen Daten ist.
  */
-
 ISR(USART_RX_vect){
     static char input[8];
     static unsigned char pos_input = 0;
@@ -82,11 +82,8 @@ ISR(USART_RX_vect){
         }
         print("> ");
         pos_input = 0;
-        /*for(int i = 0; (i-1)<LEN(input); i++){
+        for(int i = 0; (i-1)<LEN(input); i++){
             input[i] = NULL;
-        }*/
-        for(char &i : input){
-            i = NULL;
         }
     } else if (res_data >= 33 && res_data <= 126){
         input[pos_input] = res_data;
