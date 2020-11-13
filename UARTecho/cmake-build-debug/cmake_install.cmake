@@ -1,4 +1,4 @@
-# Install script for directory: /Users/clee/git/uC-Space-HTL/UARTecho
+# Install script for directory: /Users/clee/git/UARTecho
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/clee/git/uC-Space-HTL/UARTecho/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/clee/git/UARTecho/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -5,13 +5,10 @@
 
 #define BAUD 9600UL
 #define BAUD_PRESCALE (((F_CPU / (BAUD * 16UL))) - 1)
-#define LEN(arr) ((int) (sizeof (arr) / sizeof (arr)[0]))
 
 char out[] = "0x00\r";
 volatile unsigned char cur_item = 0;
 volatile unsigned char old_val = 0;
-volatile unsigned char rec_item = 0;
-volatile unsigned char rec_val = 0;
 
 void init_ADC(){
     DDRC &= ~(1<<0);
@@ -72,6 +69,8 @@ ISR(USART_TX_vect){
  * Interrupt beim Empfangen neuer Daten
  */
 ISR(USART_RX_vect){
+    static char rec_item = 0;
+    static char rec_val = 0;
     unsigned char r = UDR0;
     if(r == 'x'){
         rec_item = 1;

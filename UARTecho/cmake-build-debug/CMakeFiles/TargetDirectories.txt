@@ -1,4 +1,4 @@
-/Users/clee/git/uC-Space-HTL/UARTecho/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/clee/git/uC-Space-HTL/UARTecho/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/clee/git/uC-Space-HTL/UARTecho/cmake-build-debug/CMakeFiles/Debug.dir
-/Users/clee/git/uC-Space-HTL/UARTecho/cmake-build-debug/CMakeFiles/Production.dir
+/Users/clee/git/UARTecho/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/clee/git/UARTecho/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/clee/git/UARTecho/cmake-build-debug/CMakeFiles/Debug.dir
+/Users/clee/git/UARTecho/cmake-build-debug/CMakeFiles/Production.dir

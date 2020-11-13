@@ -54,19 +54,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = "/Users/clee/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/202.6948.80/CLion.app/Contents/bin/cmake/mac/bin/cmake"
+CMAKE_COMMAND = "/Users/clee/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/202.7660.37/CLion.app/Contents/bin/cmake/mac/bin/cmake"
 
 # The command to remove a file.
-RM = "/Users/clee/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/202.6948.80/CLion.app/Contents/bin/cmake/mac/bin/cmake" -E rm -f
+RM = "/Users/clee/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/202.7660.37/CLion.app/Contents/bin/cmake/mac/bin/cmake" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/clee/git/uC-Space-HTL/UARTecho
+CMAKE_SOURCE_DIR = /Users/clee/git/UARTecho
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/clee/git/uC-Space-HTL/UARTecho/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/clee/git/UARTecho/cmake-build-debug
 
 # Utility rule file for Debug.
 
@@ -74,7 +74,7 @@ CMAKE_BINARY_DIR = /Users/clee/git/uC-Space-HTL/UARTecho/cmake-build-debug
 include CMakeFiles/Debug.dir/progress.make
 
 CMakeFiles/Debug:
-	cd /Users/clee/git/uC-Space-HTL/UARTecho && platformio -c clion run --target debug -eDebug
+	cd /Users/clee/git/UARTecho && platformio -c clion run --target debug -eDebug
 
 Debug: CMakeFiles/Debug
 Debug: CMakeFiles/Debug.dir/build.make
@@ -91,6 +91,6 @@ CMakeFiles/Debug.dir/clean:
 .PHONY : CMakeFiles/Debug.dir/clean
 
 CMakeFiles/Debug.dir/depend:
-	cd /Users/clee/git/uC-Space-HTL/UARTecho/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/clee/git/uC-Space-HTL/UARTecho /Users/clee/git/uC-Space-HTL/UARTecho /Users/clee/git/uC-Space-HTL/UARTecho/cmake-build-debug /Users/clee/git/uC-Space-HTL/UARTecho/cmake-build-debug /Users/clee/git/uC-Space-HTL/UARTecho/cmake-build-debug/CMakeFiles/Debug.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/clee/git/UARTecho/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/clee/git/UARTecho /Users/clee/git/UARTecho /Users/clee/git/UARTecho/cmake-build-debug /Users/clee/git/UARTecho/cmake-build-debug /Users/clee/git/UARTecho/cmake-build-debug/CMakeFiles/Debug.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Debug.dir/depend
 
