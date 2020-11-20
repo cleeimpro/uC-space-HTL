@@ -11,7 +11,7 @@ mcpDAC::mcpDAC(int cs_Pin) {
 void mcpDAC::init(){
     DDRB |= (1 << PB3)|(1 << PB5)|(1 << _cPin);
     PORTB |= (1 << _cPin);
-    SPCR = (1 << SPE) | (1<<SPIE) | (1<<MSTR) | (1<<SPR0);
+    SPCR |= (1 << SPE) | (1<<MSTR) | (1<<SPR0);
 }
 
 void mcpDAC::setDAC(uint8_t resolution, uint16_t valueToSet, uint8_t channel, uint8_t gain, uint8_t shutdown){
