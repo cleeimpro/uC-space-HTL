@@ -1,8 +1,5 @@
 #include <avr/interrupt.h>
 #include <avr/io.h>
-#include <util/delay.h>
-#include <Arduino.h>
-#include "lib/mcpDAC.h"
 
 #define CS_ADC PB0
 #define CS_DAC PB1
@@ -15,8 +12,6 @@
 #define DAC_HI 3
 #define DAC_LO 4
 #define CS_RESET 5
-
-mcpDAC mcp(CS_DAC);
 
 volatile uint8_t state = IDLE;
 volatile uint16_t spiVal = 0, old_spiVal = 0;
@@ -31,13 +26,15 @@ void init_timer(){
     TIMSK0 |= (1 << OCIE0A);
 }
 
+/**
+ * Timer0 Compare Interrupt wird jede 1ms aufgerufen
+ * auf ADC wird geschrieben/gelesen
+ * auf DAC geschrieben
+ */
 ISR (TIMER0_COMPA_vect){
     PORTB &= ~(1 << CS_ADC); //set CSpin
     SPDR = 0b01100000 | ((ADC_CHANNEL & 0b111) << 2);
     state = ADC_2;
-
-    static int i = 0;
-    //mcp.setDAC(12,i=(i+1)%4095,2,2,0);
 }
 
 ISR (SPI_STC_vect){
@@ -53,11 +50,9 @@ ISR (SPI_STC_vect){
             break;
         case DAC_HI:
             spiVal |= SPDR >> 4;
-
             PORTB |= (1 << CS_ADC);
             state = IDLE;
             if(old_spiVal != spiVal) {
-                Serial.println(spiVal);
                 old_spiVal = spiVal;
                 PORTB &= ~(1 << CS_DAC);
                 SPDR = ((spiVal>>8)&0xff) | (1 << 4);
@@ -77,7 +72,6 @@ ISR (SPI_STC_vect){
 }
 
 int main(){
-
     // ADC und DAC initialisieren
     DDRB |= (1 << PB3) | (1 << PB5) | (1 << PB2) | (1 << CS_ADC) | (1 << CS_DAC);
     SPCR |= (1 << SPE) | (1 << SPIE) | (1 << MSTR) | (1 << SPR0);
@@ -89,9 +83,5 @@ int main(){
     // Enable Global Interrupts
     sei();
 
-    while(1){
-        ;
-    }
-
-
+    while(1);
 }
