@@ -1,5 +1,6 @@
 #include <avr/interrupt.h>
 #include <avr/io.h>
+#include <inttypes.h>
 
 #define CS_ADC PB0
 #define CS_DAC PB1
@@ -19,9 +20,9 @@ volatile uint16_t spiVal = 0, old_spiVal = 0;
 void init_timer(){
     // Jede ms
     TCCR0A = (1 << WGM01); // CTC Modus
-    TCCR0B |= (1 << CS00 | 1 << CS02); // Prescaler 1024
-    // ((16000000/1024)/1000) = 15.6
-    OCR0A = 255;
+    TCCR0B |= (3 << CS00); // Prescaler 64
+    // ((16000000/64)/1000) = 8
+    OCR0A = 8;
     // Compare Interrupt erlauben
     TIMSK0 |= (1 << OCIE0A);
 }
@@ -74,7 +75,7 @@ ISR (SPI_STC_vect){
 int main(){
     // ADC und DAC initialisieren
     DDRB |= (1 << PB3) | (1 << PB5) | (1 << PB2) | (1 << CS_ADC) | (1 << CS_DAC);
-    SPCR |= (1 << SPE) | (1 << SPIE) | (1 << MSTR) | (1 << SPR0);
+    SPCR |= (1 << SPE) | (1 << SPIE) | (1 << MSTR);
     PORTB |= (1 << CS_ADC) | (1 << CS_DAC);
 
     // Timer0 initialisieren

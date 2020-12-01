@@ -30,10 +30,4 @@ add_custom_target(
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-add_executable(Z_DUMMY_TARGET ${SRC_LIST} src/lib/ringBuffer.cpp src/lib/ringBuffer.h)
-
-add_custom_target(
-        PLATFORMIO_UPLOAD ALL
-        COMMAND ${PLATFORMIO_CMD} -f -c clion run --target upload && sleep 1 && ${PLATFORMIO_CMD} serialports monitor
-        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-)
+add_executable(Z_DUMMY_TARGET ${SRC_LIST})
